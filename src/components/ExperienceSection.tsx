@@ -37,12 +37,27 @@ function ExperienceItem({ company, role, date, location, description, logo, link
                 {logo ? (
                     link ? (
                         <a href={link} target="_blank" rel="noopener noreferrer" style={{ width: "100%", height: "100%", display: "block" }}>
-                            <img src={urlFor(logo).width(64).url()} alt={`${company} logo`} style={imageStyle} />
+                            <img src={typeof logo === 'string' ? logo : urlFor(logo).width(64).url()} alt={`${company} logo`} style={imageStyle} />
                         </a>
                     ) : (
-                        <img src={urlFor(logo).width(64).url()} alt={`${company} logo`} style={imageStyle} />
+                        <img src={typeof logo === 'string' ? logo : urlFor(logo).width(64).url()} alt={`${company} logo`} style={imageStyle} />
                     )
-                ) : null}
+                ) : (
+                    <div style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "8px",
+                        background: "rgba(255,255,255,0.06)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "var(--capsule-bg)",
+                        fontWeight: "700",
+                        fontSize: "1.1rem"
+                    }}>
+                        {company.charAt(0)}
+                    </div>
+                )}
             </div>
             <div className="experience-content">
                 <div className="experience-header">

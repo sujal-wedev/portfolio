@@ -21,7 +21,7 @@ export default function InteractiveAvatar({ width = 122, height = 122, priority 
         >
             <Image
                 src="/avatar.png"
-                alt="Abhijith Jinnu Avatar"
+                alt="Sujal Nag Avatar"
                 width={width}
                 height={height}
                 priority={priority}
@@ -32,7 +32,7 @@ export default function InteractiveAvatar({ width = 122, height = 122, priority 
 
             <Image
                 src="/blush.png"
-                alt="Abhijith Jinnu Blushing"
+                alt="Sujal Nag Blushing"
                 width={width}
                 height={height}
                 priority={priority}

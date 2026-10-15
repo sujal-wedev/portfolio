@@ -18,6 +18,7 @@ export interface Highlight {
   mediaType: "image" | "video";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image?: any;
+  imageUrl?: string;
   videoUrl?: string;
   videoFile?: {
     asset: {
@@ -145,6 +146,19 @@ export default function HighlightsSection({
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={urlFor(project.image).width(640).auto("format").quality(72).url()}
+                        alt={project.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: "inherit",
+                        }}
+                      />
+                    )}
+                    {project.mediaType === "image" && !project.image && project.imageUrl && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={project.imageUrl}
                         alt={project.title}
                         style={{
                           width: "100%",

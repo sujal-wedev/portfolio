@@ -1,0 +1,33 @@
+{
+  "name": "sujal-nag",
+  "version": "1.0.0",
+  "description": "Interactive CLI business card & developer portfolio for Sujal Nag",
+  "main": "bin/index.js",
+  "bin": {
+    "sujal-nag": "./bin/index.js",
+    "sujal": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "node bin/index.js",
+    "test": "node bin/index.js --help"
+  },
+  "keywords": [
+    "npx",
+    "terminal-card",
+    "cli-portfolio",
+    "sujal-nag",
+    "developer-card",
+    "interactive-cli",
+    "backend-engineer",
+    "full-stack"
+  ],
+  "author": "Sujal Nag <nagsujal9@gmail.com> (https://github.com/sujal-wedev)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sujal-wedev/portfolio"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

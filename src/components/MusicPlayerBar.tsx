@@ -63,7 +63,7 @@ export default function MusicPlayerBar({
   albumTitle,
   artworkUrl,
   trackTitle,
-  artistName = "Abhijith",
+  artistName = "Sujal",
   isPlaying,
   currentTime,
   duration,

@@ -34,17 +34,17 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: {
       default: meta.siteTitle,
-      template: "%s | Abhijith",
+      template: "%s | Sujal Nag",
     },
     description: meta.siteDescription,
     keywords: meta.keywords.length > 0 ? meta.keywords : undefined,
-    authors: [{ name: "Abhijith" }],
+    authors: [{ name: "Sujal Nag" }],
     robots: "index, follow",
     openGraph: {
       title: meta.openGraphTitle,
       description: meta.openGraphDescription,
       url: meta.siteUrl,
-      siteName: "Abhijith",
+      siteName: "Sujal Nag",
       images: [
         {
           url: ogImageUrl,

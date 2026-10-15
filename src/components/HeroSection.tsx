@@ -5,6 +5,7 @@ import MoreSection from "./MoreSection";
 import { client } from "../sanity/lib/client";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
 import imageUrlBuilder from '@sanity/image-url';
+import { portfolioData } from "../lib/portfolioData";
 
 const builder = imageUrlBuilder(client);
 function urlFor(source: any) {
@@ -32,8 +33,8 @@ const ptComponents = {
 export default async function HeroSection() {
     const settings = await client.fetch<{ jobTitle?: string | null; heroDescription?: PortableTextBlock[] | null } | null>(
         `*[_type == "siteSettings"][0]{ jobTitle, heroDescription }`
-    );
-    const jobTitle = settings?.jobTitle?.trim() || "product @ heave";
+    ).catch(() => null);
+    const jobTitle = settings?.jobTitle?.trim() || portfolioData.personalInfo.headline;
 
     return (
         <div className="hero-section">
@@ -42,7 +43,7 @@ export default async function HeroSection() {
                     <path id="curve" d="M 40,140 A 100,100 0 0,1 240,140" fill="transparent" />
                     <text fill="var(--text-primary)" className="instrument-serif" fontSize="44" textAnchor="middle" letterSpacing="-0.07em">
                         <textPath href="#curve" startOffset="50%">
-                            Abhijith Jinnu
+                            {portfolioData.personalInfo.name}
                         </textPath>
                     </text>
                 </svg>
@@ -63,7 +64,7 @@ export default async function HeroSection() {
                     <PortableText value={settings.heroDescription} components={ptComponents} />
                 ) : (
                     <p style={{ textAlign: "center" }}>
-                        i make silly mobile apps, i have experience with frontend and backend development for web, app and chrome extensions. i like making things from scratch, whether it be branding to UI UX to coding, i like to do it all.
+                        {portfolioData.personalInfo.shortBio}
                     </p>
                 )}
             </div>

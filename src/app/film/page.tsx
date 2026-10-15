@@ -48,7 +48,7 @@ export default async function FilmPage() {
             {recommendations.length > 0 && (
                 <FilmRecommendationModal
                     recommendations={recommendations}
-                    title="movie recommendations by abhijith"
+                    title="movie recommendations by sujal"
                 />
             )}
         </ProjectPageTemplate>

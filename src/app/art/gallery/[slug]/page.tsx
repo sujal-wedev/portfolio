@@ -17,9 +17,9 @@ const FALLBACK_GALLERIES: Record<
   }
 > = {
   "untitled-room": {
-    title: "The Art Gallery Title",
+    title: "The Engineering & Art Gallery",
     description:
-      "hey, my name is Abhijith and i make silly mobile apps, i have experience with frontend and backend development for web, app and chrome extensions. i like making things from scratch, whether it be branding to UI UX to coding, i like to do it all.",
+      "hey, my name is Sujal Nag and I build scalable backends, event-driven pipelines, and AI systems. Welcome to my creative showcase.",
   },
 };
 

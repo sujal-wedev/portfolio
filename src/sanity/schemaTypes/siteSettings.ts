@@ -13,7 +13,7 @@ export const siteSettingsType = defineType({
             name: 'jobTitle',
             title: 'Job Title (Hero Subtitle)',
             type: 'string',
-            description: 'e.g. product @ heave',
+            description: 'e.g. Software Engineer | Backend & Full Stack',
             group: 'content',
         }),
         defineField({
@@ -76,7 +76,7 @@ export const siteSettingsType = defineType({
             name: 'siteTitle',
             title: 'Site Title',
             type: 'string',
-            description: 'Default <title> and used in Open Graph / Twitter cards. e.g. "Product & Design-First Software Engineer | Abhijith"',
+            description: 'Default <title> and used in Open Graph / Twitter cards. e.g. "Software Engineer & Full Stack Developer | Sujal Nag"',
             group: 'metadata',
         }),
         defineField({
@@ -90,7 +90,7 @@ export const siteSettingsType = defineType({
             name: 'siteUrl',
             title: 'Site URL',
             type: 'url',
-            description: 'Canonical site URL, e.g. https://abhijithjinnu.in',
+            description: 'Canonical site URL, e.g. https://github.com/sujal-wedev',
             group: 'metadata',
         }),
         defineField({

@@ -693,7 +693,7 @@ export default function MusicAlbumPlayer({
           all license to me and whomsoever it may concern bc i cant recall all
           the samples. all non profit.
         </p>
-        <p className="music-detail-footer-legal">© 2026 Abhijith</p>
+        <p className="music-detail-footer-legal">© 2026 Sujal Nag</p>
       </footer>
 
       {!isAppleMusic && hasPlayableTracks && (

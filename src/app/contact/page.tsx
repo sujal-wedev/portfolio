@@ -2,13 +2,20 @@ import Image from "next/image";
 import InteractiveAvatar from "../../components/ui/InteractiveAvatar";
 import { BlurredStagger } from "../../components/ui/blurred-stagger-text";
 import { client } from "../../sanity/lib/client";
+import { portfolioData } from "../../lib/portfolioData";
 
 export const dynamic = 'force-dynamic';
 
 export default async function Contact() {
     const settings = await client.fetch(`*[_type == "siteSettings"][0]{
         email, linkedin, github
-    }`);
+    }`).catch(() => null);
+
+    const email = settings?.email || portfolioData.personalInfo.email;
+    const linkedin = settings?.linkedin || portfolioData.personalInfo.linkedin;
+    const github = settings?.github || portfolioData.personalInfo.github;
+    const phone = portfolioData.personalInfo.phone;
+
     return (
         <div className="contact-page">
             <div className="hero-section">
@@ -27,33 +34,44 @@ export default async function Contact() {
                     <InteractiveAvatar priority={true} />
                 </div>
 
-                <h1 className="contact-title"><BlurredStagger text="touch me" /></h1>
+                <h1 className="contact-title"><BlurredStagger text="get in touch" /></h1>
 
                 <div className="contact-description">
                     <p>
-                        if you wanna get in touch, feel free to connect with me over your preferred ways and i will get back to you :)
+                        if you'd like to collaborate, talk backend systems & AI, or discuss engineering roles, feel free to connect with me!
                     </p>
                 </div>
 
-                <div className="social-links">
-                    <a href={settings?.linkedin || "#"} target={settings?.linkedin ? "_blank" : undefined} rel={settings?.linkedin ? "noopener noreferrer" : undefined} className="social-icon" aria-label="LinkedIn">
+                <div className="social-links" style={{ display: "flex", gap: "16px", justifyContent: "center", marginTop: "24px" }}>
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn" title="LinkedIn">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                             <rect x="2" y="9" width="4" height="12"></rect>
                             <circle cx="4" cy="4" r="2"></circle>
                         </svg>
                     </a>
-                    <a href={settings?.email ? `mailto:${settings.email}` : "#"} className="social-icon" aria-label="Email">
+                    <a href={`mailto:${email}`} className="social-icon" aria-label="Email" title={`Email: ${email}`}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                             <path d="M2 4l10 8 10-8"></path>
                         </svg>
                     </a>
-                    <a href={settings?.github || "#"} target={settings?.github ? "_blank" : undefined} rel={settings?.github ? "noopener noreferrer" : undefined} className="social-icon" aria-label="GitHub">
+                    <a href={github} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub" title="GitHub">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                     </a>
+                    <a href={`tel:${phone}`} className="social-icon" aria-label="Phone" title={`Phone: ${phone}`}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div style={{ marginTop: "32px", fontSize: "0.9rem", color: "var(--text-secondary)", display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <span>Email: <a href={`mailto:${email}`} style={{ color: "var(--text-primary)", textDecoration: "underline" }}>{email}</a></span>
+                    <span>Phone: <a href={`tel:${phone}`} style={{ color: "var(--text-primary)", textDecoration: "underline" }}>+91 {phone}</a></span>
+                    <span>Location: {portfolioData.personalInfo.location}</span>
                 </div>
             </div>
         </div>
